@@ -1,9 +1,3 @@
-# add_library(ov7670 ov7670.c)
-
-# add_executable(ov7670
-#                 ov7670.c)
-
-
 add_library(ov7670 ov7670.c ov7670.h)
 
 target_include_directories(ov7670 PUBLIC

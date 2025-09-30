@@ -28,39 +28,37 @@ set(PICO_BOARD pico2 CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(pico2_camera C CXX ASM)
+project(pico-ov7670-driver C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(pico2_camera 
+add_executable(pico-ov7670-driver
 
-                # compiles simpletest
-                examples/simpletest.c 
-                
-                # compile selfie test
-
-                # GFX / ILI9341 / TOUCH
-                # tft_lcd_ili9341/gfx/gfx.c
-                # tft_lcd_ili9341/ili9341/ili9341.c
-                # tft_lcd_ili9341/touch_resistive/touch_resistive.c)
+                # compiles simpletest 
+                # (uncoment each line to test each example)
+                # examples/simpletest.c 
+                examples/selfietest.c       
 )
-pico_set_program_name(pico2_camera "pico2_camera")
-pico_set_program_version(pico2_camera "0.1")
+pico_set_program_name(pico-ov7670-driver "pico-ov7670-driver")
+pico_set_program_version(pico-ov7670-driver "1.0")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(pico2_camera 1)
-pico_enable_stdio_usb(pico2_camera 0)
+pico_enable_stdio_uart(pico-ov7670-driver 1)
+pico_enable_stdio_usb(pico-ov7670-driver 0)
 
 
 
 
 # Add the standard library to the build
-target_link_libraries(pico2_camera
+target_link_libraries(pico-ov7670-driver
         pico_stdlib
         ov7670
+        ili9341
+        gfx
+        touch_resistive
         hardware_spi
         hardware_dma
         hardware_adc
@@ -69,11 +67,12 @@ target_link_libraries(pico2_camera
 
 
 # Add the standard include files to the build
-target_include_directories(pico2_camera PRIVATE
+target_include_directories(pico-ov7670-driver PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
 add_subdirectory(lib_ov7670)
+add_subdirectory(lib_ili9341)
 
-pico_add_extra_outputs(pico2_camera)
+pico_add_extra_outputs(pico-ov7670-driver)
 

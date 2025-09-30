@@ -7,7 +7,6 @@
 // OV7670 pin definitions
 #define OV7670_MCLK_PIN           20  // Pin for MCLK
 #define OV7670_RESET_PIN          10  // Pin for RESET
-#define OV7670_MCLK_PIN 20  // Enable OV7670 XCLK pin control
 #define OV7670_PCLK_PIN 11  // Enable OV7670 PCLK pin control
 #define OV7670_HREF_PIN  21  // Enable OV7670 HREF pin control
 #define OV7670_VSYNC_PIN 7  // Enable OV7670 VSYNC pin control
@@ -39,8 +38,8 @@
 // table of night mode settings
 #define OV7670_NIGHT_MODE_OFF  0          //"""Disable night mode"""
 #define OV7670_NIGHT_MODE_2  0b10100000   //"""Night mode 1/2 frame rate"""]
-#define OV7670_NIGHT_MODE_4 = 0b11000000  //"""Night mode 1/4 frame rate"""
-#define OV7670_NIGHT_MODE_8 = 0b11100000  //"""Night mode 1/8 frame rate"""
+#define OV7670_NIGHT_MODE_4  0b11000000  //"""Night mode 1/4 frame rate"""
+#define OV7670_NIGHT_MODE_8  0b11100000  //"""Night mode 1/8 frame rate"""
 
 //"""Default I2C address if unspecified"""
 #define  OV7670_ADDR               0x21  // ov7670 address
@@ -240,7 +239,7 @@
 #define _OV7670_REG_SATCTR         0xC9  // Saturation control
 
 
-#define _OV7670_REG_LAST = _OV7670_REG_SATCTR  // Maximum register address
+#define _OV7670_REG_LAST  _OV7670_REG_SATCTR  // Maximum register address
 // -- // end ov7670 register defines
 
 
@@ -268,7 +267,7 @@ int ov7670_product_id(void);
 
 int ov7670_write_register(uint8_t OV7670_I2C_REG_ADDR, uint8_t OV7670_I2C_REG_VALUE);
 
-int ov7670_read_register(uint8_t OV7670_I2C_ADDR);
+int ov7670_read_register(uint8_t reg);
 
 int ov7670_register_test(void);
 

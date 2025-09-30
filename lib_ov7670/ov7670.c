@@ -230,7 +230,7 @@ uint8_t _OV7670_inits[] = {
         _OV7670_REG_CONTRAS_CENTER,
         0x80,  // 0x40?
         _OV7670_REG_CLKRC,
-         0x01,  // limitating pclk (internal clock) for using pooling
+         0x02,  // limitating pclk (internal clock) for using pooling //best for high resolution, but more delay to generate img
 };
 
 // defining data pins
@@ -272,7 +272,7 @@ int ov7670_capture(uint8_t *buf, size_t len, int width, int height) {
             while (!gpio_get(OV7670_PCLK_PIN));
             uint8_t y_byte = 0;
             for (int i = 0; i < 8; i++) {
-                if (gpio_get(OV7670_DATA_PINS[i])) y_byte |= (1 << i);
+                if (gpio_get(OV7670_DATA_PINS[i])) y_byte |= (1 << i); // parallel pins reading
             }
             buf[count++] = y_byte;
             while (gpio_get(OV7670_PCLK_PIN));

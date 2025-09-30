@@ -2,9 +2,31 @@
 #include "pico/stdlib.h"
 #include "ov7670.h"
 #include <string.h>
+#include "ili9341.h"
+#include "gfx.h"
+#include "touch_resistive.h"
 
 // observations:
 // use 4.7Kohm pullups on SDA and SCL lines
+
+
+
+static inline uint16_t Y_to_gray565(uint8_t Y) {
+// turn Y (0-255) into a gray color in RGB565 format
+    return GFX_RGB565(Y, Y, Y);
+}
+
+void draw_frame(uint8_t *buf, int width, int height) {
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            uint8_t Y = buf[y * width + x];
+            uint16_t color = Y_to_gray565(Y);
+            GFX_drawPixel(x, y, color);
+        }
+    }
+    GFX_flush();  /// send to display
+}
+
 
 int main()
 {
@@ -22,27 +44,30 @@ int main()
     // OV7670_SIZE_DIV4            2  //"""160 x 120"""
     // OV7670_SIZE_DIV8            3  //"""80 x 60"""
     // OV7670_SIZE_DIV16           4  //"""40 x 30"""
-    int size = OV7670_SIZE_DIV4; // 160x120
-    WIDTH = 160;
-    HEIGHT = 120;
+    int size = OV7670_SIZE_DIV2; // 160x120
+    WIDTH = 320;
+    HEIGHT = 240;
     ov7670_frame_control(size, _window[size][0],_window[size][1] , _window[size][2], _window[size][3]);
 
 
     // Configuração da câmera
     
-    uint8_t buf[WIDTH * HEIGHT];  // só Y (1 byte por pixel)
+    uint8_t buf[WIDTH * HEIGHT];  
+    stdio_init_all();         
 
-    
+    // inilitializations display and touch
+    LCD_initDisplay();        
+    LCD_setRotation(1);       
+    GFX_createFramebuf();     
+    configure_touch();        
+
     while (true) {
-        int n = ov7670_capture(buf, sizeof(buf), WIDTH, HEIGHT);
+        // sends to display
+        // creating a image of 160x120 pixels
 
-        // envia marcador de início
-        printf("FRAME\n");
 
-        // envia os bytes crus
-        fwrite(buf, 1, n, stdout);
-
-        sleep_ms(50); // intervalo entre frames
+        ov7670_capture(buf, sizeof(buf), WIDTH, HEIGHT);
+        draw_frame(buf, WIDTH, HEIGHT);
     }
 
 }
