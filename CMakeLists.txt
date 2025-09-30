@@ -15,9 +15,9 @@ if(WIN32)
 else()
     set(USERHOME $ENV{HOME})
 endif()
-set(sdkVersion 2.2.0)
+set(sdkVersion 2.1.1)
 set(toolchainVersion 14_2_Rel1)
-set(picotoolVersion 2.2.0)
+set(picotoolVersion 2.1.1)
 set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
 if (EXISTS ${picoVscode})
     include(${picoVscode})
@@ -38,7 +38,7 @@ pico_sdk_init()
 add_executable(pico2_camera 
 
                 # compiles simpletest
-                simpletest.c 
+                examples/simpletest.c 
                 
                 # compile selfie test
 
@@ -73,7 +73,7 @@ target_include_directories(pico2_camera PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
-add_subdirectory(ov7670)
+add_subdirectory(lib_ov7670)
 
 pico_add_extra_outputs(pico2_camera)
 
