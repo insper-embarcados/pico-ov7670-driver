@@ -40,6 +40,13 @@
     "files.associations": {
         "ov7670.h": "c",
         "ili9341.h": "c",
-        "spi.h": "c"
+        "spi.h": "c",
+        "stdint.h": "c",
+        "string.h": "c",
+        "i2c.h": "c",
+        "stdlib.h": "c",
+        "clocks.h": "c",
+        "touch_resistive.h": "c",
+        "gfx.h": "c"
     }
 }
