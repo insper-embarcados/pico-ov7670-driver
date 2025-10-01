@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "ov7670.h"
-#include <string.h>
 
 // observations:
 // use 4.7Kohm pullups on SDA and SCL lines
@@ -30,9 +29,9 @@ int main()
     ov7670_frame_control(size, _window[size][0],_window[size][1] , _window[size][2], _window[size][3]);
 
 
-    // Configuração da câmera
     
-    uint8_t buf[WIDTH * HEIGHT];  // só Y (1 byte por pixel)
+    
+    uint8_t buf[WIDTH * HEIGHT];  
 
     
     while (true) {

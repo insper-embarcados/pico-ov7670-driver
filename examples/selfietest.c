@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "ov7670.h"
-#include <string.h>
 #include "ili9341.h"
 #include "gfx.h"
 #include "touch_resistive.h"
@@ -44,13 +43,12 @@ int main()
     // OV7670_SIZE_DIV4            2  //"""160 x 120"""
     // OV7670_SIZE_DIV8            3  //"""80 x 60"""
     // OV7670_SIZE_DIV16           4  //"""40 x 30"""
-    int size = OV7670_SIZE_DIV2; // 160x120
+    int size = OV7670_SIZE_DIV2; // 320x240
     WIDTH = 320;
     HEIGHT = 240;
     ov7670_frame_control(size, _window[size][0],_window[size][1] , _window[size][2], _window[size][3]);
 
 
-    // Configuração da câmera
     
     uint8_t buf[WIDTH * HEIGHT];  
     stdio_init_all();         

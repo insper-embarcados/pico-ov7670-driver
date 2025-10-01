@@ -251,15 +251,17 @@ extern int HEIGHT;
 
 int ov7670_capture( uint8_t*buf, size_t len, int width, int height);  // needs to implement
 
-int ov7670_mclk_config();
+int ov7670_mclk_config(void);
 
-int ov7670_i2c_config();
+int ov7670_i2c_config(void);
 
-int ov7670_reset();
+int ov7670_reset(void);
 
-int ov7670_shutdown();
+int ov7670_shutdown(void);
 
 int ov7670_config(void);
+
+int ov7670_pins_config(void);
 
 int ov7670_product_version(void);
 

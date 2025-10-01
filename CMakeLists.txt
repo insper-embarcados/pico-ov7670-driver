@@ -59,9 +59,7 @@ target_link_libraries(pico-ov7670-driver
         ili9341
         gfx
         touch_resistive
-        hardware_spi
-        hardware_dma
-        hardware_adc
+
         )
 
 
