@@ -137,9 +137,9 @@ If you need to check the `lib_ili9341/` pins, look at the files in the lib_ili93
 
 ## License
 
-The MIT License (MIT)
+MIT License
 
-Copyright (c) 2020 Adafruit Industries
+Copyright (c) 2025 Daniel Messias da Silva Pinto
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
