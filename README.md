@@ -1,4 +1,5 @@
-# Pico C SDK OV7670 Library
+# Pico C SDK OV7670 Library ![RP2040](https://img.shields.io/badge/target-RP2040-red) ![RP2350](https://img.shields.io/badge/target-RP2350-lightgrey) ![OV7670](https://img.shields.io/badge/Camera-OV7670-purple)
+
 
 Pico C SDK Driver for 0V7670 cameras raspberry pi Pico 1 and 2.
 
