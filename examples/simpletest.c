@@ -1,7 +1,8 @@
-#include "ov7670.h"
-#include "pico/stdlib.h"
 #include <stdint.h>
 #include <stdio.h>
+#include "ov7670.h"
+#include "pico/stdlib.h"
+
 
 // observations:
 // use 4.7Kohm pullups on SDA and SCL lines
@@ -31,12 +32,13 @@ int main() {
 
   while (true) {
     int n = ov7670_capture(buf, sizeof(buf), WIDTH, HEIGHT);
-    printf("Captured %d bytes\n", n);
+    // printf("Captured %d bytes\n", n);
     for (int y = 0; y < HEIGHT; y++) {
       for (int x = 0; x < WIDTH; x++) {
         uint8_t Y = buf[y * WIDTH + x];
         int level = (Y * (sizeof(ascii_map) - 2)) / 255;
-        putchar(ascii_map[level]);
+        // putchar(ascii_map[level]);
+        printf("%d, ",level);
       }
       putchar('\n');
     }

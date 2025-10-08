@@ -5,7 +5,6 @@ Pico C SDK Driver for 0V7670 cameras raspberry pi Pico 1 and 2.
 
 ## Conteúdo
 
-- [Visão geral](#pico-c-sdk-ov7670-library)
 - [Dependencies](#dependencies)
 - [Usage Example](#usage-example)
   - [Selfie camera example (ili9341 + OV7670)](#selfie-camera-example-using-ili9341-320x240-pixels-and-ov7670-camera)
@@ -16,7 +15,7 @@ Pico C SDK Driver for 0V7670 cameras raspberry pi Pico 1 and 2.
 - [My Setup](#my-setup-for-testing)
 - [References](#references)
 - [Functions](#functions)
-- [Licença](#license)
+- [License](#license)
 
 ## Dependencies
 
