@@ -37,8 +37,7 @@ int main() {
       for (int x = 0; x < WIDTH; x++) {
         uint8_t Y = buf[y * WIDTH + x];
         int level = (Y * (sizeof(ascii_map) - 2)) / 255;
-        // putchar(ascii_map[level]);
-        printf("%d, ",level);
+        putchar(ascii_map[level]);
       }
       putchar('\n');
     }
